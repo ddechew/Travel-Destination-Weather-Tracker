@@ -11,6 +11,7 @@ A cross-platform .NET MAUI mobile application that allows users to:
 ## ✨ Features
 
 ### 📍 Destinations Management
+
 - Add, edit, or delete travel destinations
 - Set status: `Planned`, `Ongoing`, `Completed`, or `Cancelled`
 - Start and end dates
@@ -18,6 +19,7 @@ A cross-platform .NET MAUI mobile application that allows users to:
 - Cities dynamically fetched based on selected country
 
 ### 🌎 Weather Forecasts
+
 - Fetch 7-day forecasts via [WeatherAPI.com](https://www.weatherapi.com/)
 - View:
   - Current weather
@@ -26,6 +28,7 @@ A cross-platform .NET MAUI mobile application that allows users to:
   - Wind speed, humidity, and rain chance
 
 ### 💰 Expense Tracking
+
 - Add generic expenses by type and value
 - Add hotel expenses from Amadeus hotel API:
   - Hotel name, price per night, duration, total
@@ -49,6 +52,7 @@ A cross-platform .NET MAUI mobile application that allows users to:
 All API keys are stored securely in `appsettings.json`, which is excluded from version control using `.gitignore`.
 
 ### Sample `appsettings.json`
+
 ```json
 {
   "Amadeus": {
@@ -64,13 +68,15 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 ---
 
 ## 💪 Key Architectural Decisions
-- **Shell navigation** was used to simplify page routing
+
+- **Basic Navigation** is used for all routing between pages instead of Shell
 - `NavigationContext.cs` stores temporary navigation data like destinations, country lists, etc.
 - MVU was initially considered but MVVM was adopted for flexibility
 
 ---
 
 ## 📓 Future Improvements
+
 - Authentication (Firebase or Azure AD B2C)
 - Cloud sync for destinations and expenses
 - More advanced filtering and reporting
@@ -79,6 +85,7 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 ---
 
 ## 📁 Folder Structure
+
 ```
 - Models/           // Domain models like Destination, Expense, Hotel
 - Services/         // API & database services (Weather, Amadeus, SQLite)
@@ -90,6 +97,7 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 ---
 
 ## 🚀 Getting Started
+
 1. Clone this repo
 2. Create your own `appsettings.json` in the project root
 3. Add your Amadeus and Weather API credentials
@@ -97,10 +105,6 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 
 ---
 
-## 👀 Screenshots
-*Coming soon...*
-
----
-
 ## ✍️ Author - Decho Dechev
+
 Built with determination, iterations, and late nights ☕️
