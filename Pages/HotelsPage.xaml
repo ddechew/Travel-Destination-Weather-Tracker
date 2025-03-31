@@ -1,0 +1,82 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="DestinationsApp.HotelsPage"
+             Title="Hotels">
+
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Search -->
+            <RowDefinition Height="Auto"/>
+            <!-- Sort -->
+            <RowDefinition Height="*"/>
+            <!-- List -->
+        </Grid.RowDefinitions>
+
+        <SearchBar x:Name="HotelSearchBar"
+                   Grid.Row="0"
+                   Placeholder="Search by hotel name..."
+                   TextChanged="OnSearchTextChanged"
+                   CancelButtonColor="Gray"
+                   FontSize="14"
+                   BackgroundColor="#1C1C1E"
+                   TextColor="White"
+                   PlaceholderColor="Gray" />
+
+        <Picker x:Name="SortPicker"
+                Grid.Row="1"
+                Title="Sort by"
+                SelectedIndexChanged="OnSortChanged"
+                BackgroundColor="#1C1C1E"
+                TextColor="White">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type sys:String}">
+                    <sys:String>Price: Low to High</sys:String>
+                    <sys:String>Price: High to Low</sys:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <CollectionView x:Name="HotelsListView"
+                        Grid.Row="2"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="12"
+                           CornerRadius="10"
+                           BorderColor="Gray"
+                           BackgroundColor="Black"
+                           HasShadow="True">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="{Binding CityCode}" FontSize="14" TextColor="White"/>
+                            <Label Text="{Binding CountryCode}" FontSize="14" TextColor="White"/>
+                            <Label Text="{Binding Price, StringFormat='Price: {0} BGN Per Night'}"
+                                   FontSize="14" TextColor="LimeGreen"/>
+                            <Button Text="View Details"
+                                    Clicked="OnHotelDetailsClicked"
+                                    BackgroundColor="MediumPurple"
+                                    TextColor="Black"
+                                    CornerRadius="10" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator 
+            IsRunning="{Binding IsLoading}" 
+            IsVisible="{Binding IsLoading}" 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            WidthRequest="50"
+            HeightRequest="50"
+            Color="MediumPurple"
+            Grid.RowSpan="3"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,85 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DestinationsApp.HotelDetailsPage"
+             xmlns:utils="clr-namespace:DestinationsApp.Utils"
+             Title="Hotel Details">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utils:IntToStringConverter x:Key="IntToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="12">
+            <Label Text="{Binding HotelName}" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Address}" 
+                   FontSize="16"
+                   HorizontalOptions="Center" />
+
+            <Image Source="hotel_placeholder.png"
+               HeightRequest="400"
+               HorizontalOptions="Center"
+               Margin="0,10" />
+
+            <Label Text="{Binding Price}" 
+               FontSize="18" 
+               TextColor="Green"
+               HorizontalOptions="Center" />
+
+            <Label Text="{Binding RemainingLabel}" 
+       FontSize="14"
+       TextColor="{Binding RemainingLabelColor}"
+       HorizontalOptions="Center" />
+
+
+            <Label Text="Number of Nights"
+               FontAttributes="Bold"
+               FontSize="16" />
+
+            <Stepper x:Name="DurationStepper"
+                 Minimum="1"
+                 Increment="1"
+                 Value="{Binding SelectedDuration, Mode=TwoWay}">
+                <Stepper.Maximum>
+                    <x:Double>100</x:Double>
+                </Stepper.Maximum>
+            </Stepper>
+
+            <Entry Text="{Binding SelectedDuration, Converter={StaticResource IntToStringConverter}, Mode=TwoWay}"
+                   Keyboard="Numeric"
+                   Placeholder="Number of Nights"
+                   HorizontalOptions="Center" />
+
+            <Button Text="View on Google Maps"
+                Clicked="OnViewInMapsClicked"
+                BackgroundColor="#34A853"
+                TextColor="White"
+                CornerRadius="10"
+                Padding="12"
+                FontAttributes="Bold" />
+
+            <Button Text="Add as Expense"
+                    Clicked="OnAddExpenseClicked"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="12"
+                    FontAttributes="Bold" />
+
+            <Button Text="Edit Expense"
+                    IsVisible="{Binding IsEditMode}"
+                    Clicked="OnEditExpenseClicked"
+                    BackgroundColor="#FFA500"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="12"
+                    FontAttributes="Bold" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

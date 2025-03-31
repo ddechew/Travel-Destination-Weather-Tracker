@@ -1,0 +1,94 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DestinationsApp.Utils"
+             x:Class="DestinationsApp.ExpensesPage"
+             Title="Expenses">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Label Text="Type" />
+            <Entry x:Name="TypeEntry" Placeholder="e.g. Hotel, Food, Taxi" />
+
+            <Label Text="Value" />
+            <Entry x:Name="ValueEntry" Keyboard="Numeric" />
+
+            <Button Text="Choose Hotel" Clicked="OnChooseHotelClicked" BackgroundColor="Plum" />
+            <Button Text="Save Expense" Clicked="OnSaveExpenseClicked" BackgroundColor="Plum" />
+
+            <CollectionView x:Name="ExpensesListView"
+                Margin="0,20,0,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray"
+           Padding="12"
+           CornerRadius="12"
+           BackgroundColor="Black">
+                            <VerticalStackLayout Spacing="6">
+
+                                <!-- (Generic Expense Info) -->
+                                <Label Text="{Binding Type}" FontAttributes="Bold" FontSize="18"/>
+                                <Label Text="{Binding Value, StringFormat='Value: {0} BGN'}"
+                                    IsVisible="{Binding IsHotel, Converter={StaticResource InverseBoolConverter}}" />
+
+
+                                <!-- Hotel-specific section -->
+                                <StackLayout IsVisible="{Binding IsHotel}">
+                                    <Label Text="{Binding HotelName}" FontSize="16"/>
+                                    <Label Text="{Binding City}" />
+                                    <Label Text="{Binding Country}" />
+                                    <Label Text="{Binding Duration, StringFormat='Duration: {0} days'}" />
+                                    <Label Text="{Binding BookedPrice, StringFormat='Booked Price: {0} BGN'}" />
+                                    <Label Text="{Binding TotalCost, StringFormat='Total Cost: {0} BGN'}" />
+                                    <Button Text="View Hotel"
+                                            Clicked="OnViewHotelClicked"
+                                            BackgroundColor="Purple"
+                                            TextColor="White"
+                                            CornerRadius="10"
+                                            Margin="0,10,0,0" />
+                                </StackLayout>
+
+                                    <Button Text="Edit"
+                                            Clicked="OnEditExpenseClicked"
+                                            BackgroundColor="Orange"
+                                            TextColor="Black"
+                                            CornerRadius="10"
+                                            Margin="0,10,0,0"
+                                            IsVisible="{Binding IsHotel, Converter={StaticResource InverseBoolConverter}}" />
+
+
+                                <Button Text="Delete"
+                    Clicked="OnDeleteExpenseClicked"
+                    BackgroundColor="MediumPurple"
+                    TextColor="Black"
+                    CornerRadius="10"
+                    Margin="0,10,0,0" />
+
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="TotalLabel"
+               Text="Total Expenses: 0 BGN"
+               FontAttributes="Bold"
+               FontSize="18"
+               TextColor="White"
+               HorizontalOptions="Center"
+               Margin="0,20,0,10"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

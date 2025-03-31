@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DestinationsApp.DestinationPage"
+             Title="{Binding PageTitle}">
+
+    <ScrollView>
+        <Grid>
+            <VerticalStackLayout Padding="20" Spacing="15" IsVisible="{Binding IsNotLoading}">
+                <Label Text="Pick a Country" />
+                <Picker x:Name="CountryPicker"
+                        Title="Select Country"
+                        FontFamily="Segoe UI Emoji"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
+
+                <Label Text="Pick a City"/>
+                <Picker x:Name="CityPicker"
+                        Title="Select City"
+                        ItemsSource="{Binding Cities}"
+                        SelectedItem="{Binding SelectedCity, Mode=TwoWay}"/>
+
+                <Label Text="Start Date"/>
+                <DatePicker x:Name="StartDatePicker"/>
+
+                <Label Text="Duration (Days)"/>
+                <Entry x:Name="DurationEntry" Placeholder="Enter Duration" Keyboard="Numeric"/>
+
+                <Label Text="Purpose"/>
+                <Entry x:Name="PurposeEntry" Placeholder="Enter Purpose"/>
+
+                <Label Text="Rating"/>
+                <Entry x:Name="RatingEntry" Placeholder="Enter Rating (1-5)" Keyboard="Numeric"/>
+
+                <Label Text="Status"/>
+                <Picker x:Name="StatusPicker"
+                        Title="Select Status"
+                        ItemsSource="{Binding StatusOptions, Mode=TwoWay}"/>
+
+                <Button x:Name="expensesBtn"
+                        Text="Expenses"
+                        BackgroundColor="MediumOrchid"
+                        TextColor="White"
+                        Clicked="OnExpensesClicked"
+                        Margin="0,10,0,0"/>
+
+                <Button Text="Check Weather"
+                        BackgroundColor="LightSkyBlue"
+                        TextColor="White"
+                        Clicked="OnCheckWeatherClicked"
+                        Margin="0,10,0,0" />
+
+
+                <Button x:Name="saveBtn"
+                        Text="Save"
+                        BackgroundColor="DodgerBlue"
+                        TextColor="White"
+                        Clicked="OnAddDestinationClicked"
+                        IsVisible="{Binding IsNotEditing}" />
+
+                <Button x:Name="editBtn"
+                        Text="Edit"
+                        BackgroundColor="DodgerBlue"
+                        TextColor="White"
+                        Clicked="OnAddDestinationClicked"
+                        IsVisible="{Binding IsEditing}" />
+            </VerticalStackLayout>
+
+            <ActivityIndicator 
+                IsRunning="{Binding IsLoading}" 
+                IsVisible="{Binding IsLoading}" 
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Color="Purple"
+                WidthRequest="50"
+                HeightRequest="50"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>

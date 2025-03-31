@@ -1,0 +1,52 @@
+# ========== .NET / MAUI Core ==========
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DS_Store
+
+# Rider / VS Code / JetBrains
+.idea/
+.vscode/
+.vs/
+
+# ========== MAUI Device Artifacts ==========
+*.apk
+*.aab
+*.ipa
+*.app
+*.msix
+*.msixbundle
+
+# ========== Local SQLite or app data ==========
+*.db
+*.db-shm
+*.db-wal
+
+# ========== Secrets & Configs ==========
+appsettings.json
+secrets.json
+*.key
+*.pfx
+
+# If you use a separate dev config
+appsettings.Development.json
+
+# ========== Logs & Diagnostics ==========
+*.log
+
+# ========== Other ==========
+# Auto-generated during build
+AppPackages/
+TestResults/
+*.nupkg
+*.snupkg
+*.tgz
+
+# macOS system files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db

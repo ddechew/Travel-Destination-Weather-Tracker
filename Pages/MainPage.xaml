@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DestinationsApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="10" Padding="20" Spacing="10">
+
+            <Button Text="New Destination" Clicked="AddNewDestination" Margin="20"/>
+
+            <CollectionView ItemsSource="{Binding Destinations}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="Black" 
+                                StrokeThickness="2" 
+                                Padding="10">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30"/>
+                            </Border.StrokeShape>
+                            <StackLayout Padding="20">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                                    <Button Text="Active"
+                                        BackgroundColor="{Binding ActiveButtonColor}"
+                                        TextColor="White"
+                                        Clicked="OnActiveClicked"
+                                        CommandParameter="{Binding}" />
+
+                                    <Button Text="Completed"
+                                        BackgroundColor="{Binding CompletedButtonColor}"
+                                        TextColor="White"
+                                        Clicked="OnCompletedClicked"
+                                        CommandParameter="{Binding}" />
+
+                                </StackLayout>
+                                <Label Padding="10" Text="{Binding Country, StringFormat='Country: {0}'}" />
+                                <Label Padding="10" Text="{Binding City, StringFormat='City: {0}'}" />
+                                <Label Padding="10" Text="{Binding FormattedStartDate}" />
+                                <Label Padding="10" Text="{Binding FormattedEndDate}" />
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                                    <Button Text="Edit"
+                                            Clicked="EditDestination"
+                                            CommandParameter="{Binding .}"/>
+                                    <Button Text="Delete" 
+                                            BackgroundColor="OrangeRed" 
+                                            TextColor="White" 
+                                            Clicked="OnDeleteClicked" 
+                                            CommandParameter="{Binding}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
