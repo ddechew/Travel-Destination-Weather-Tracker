@@ -108,3 +108,10 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 ## ✍️ Author - Decho Dechev
 
 Built with determination, iterations, and late nights ☕️
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
+
