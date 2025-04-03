@@ -1,8 +1,8 @@
-﻿using System.Net.Http.Json;
-using System.Text.Json;
-using DestinationsApp.Models;
+﻿namespace DestinationsApp.Services;
+
 using DestinationsApp.Services.Models;
-using DestinationsApp.Utils;
+
+using System.Net.Http.Json;
 
 public class CountryService
 {
@@ -32,7 +32,6 @@ public class CountryService
 
         return new List<string>();
     }
-
 
     public async Task<List<string>> GetCitiesByCountryAsync(string countryName)
     {

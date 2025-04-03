@@ -71,7 +71,7 @@ All API keys are stored securely in `appsettings.json`, which is excluded from v
 
 - **Basic Navigation** is used for all routing between pages instead of Shell
 - `NavigationContext.cs` stores temporary navigation data like destinations, country lists, etc.
-- MVU was initially considered but MVVM was adopted for flexibility
+- MVVM was initially considered but MVU was used due to project requirements.
 
 ---
 

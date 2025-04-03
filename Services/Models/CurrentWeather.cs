@@ -1,5 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using DestinationsApp.Services.Models;
+﻿namespace DestinationsApp.Services.Models;
+
+using System.Text.Json.Serialization;
 
 public class CurrentWeather
 {

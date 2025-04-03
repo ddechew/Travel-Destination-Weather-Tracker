@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿namespace DestinationsApp.Services.Models;
 
-namespace DestinationsApp.Services.Models
+using System.Text.Json.Serialization;
+
+public class Forecast
 {
-    public class Forecast
-    {
-        [JsonPropertyName("forecastday")]
-        public List<ForecastDay> ForecastDays { get; set; }
-    }
+    [JsonPropertyName("forecastday")]
+    public List<ForecastDay> ForecastDays { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace DestinationsApp.Services;
 
@@ -8,20 +9,22 @@ public static class ConfigurationService
 
     static ConfigurationService()
     {
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(AppContext.BaseDirectory)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        var assembly = Assembly.GetExecutingAssembly();
+        var resourceName = "DestinationsApp.appsettings.json"; 
 
-        _configuration = builder.Build();
+        using var stream = assembly.GetManifestResourceStream(resourceName);
+
+        if (stream == null)
+            throw new FileNotFoundException($"Embedded resource '{resourceName}' not found.");
+
+        _configuration = new ConfigurationBuilder()
+            .AddJsonStream(stream)
+            .Build();
     }
 
-    public static string GetAmadeusValue(string key)
-    {
-        return _configuration[$"Amadeus:{key}"];
-    }
+    public static string GetAmadeusValue(string key) =>
+        _configuration[$"Amadeus:{key}"];
 
-    public static string GetWeatherValue(string key)
-    {
-        return _configuration[$"Weather:{key}"];
-    }
+    public static string GetWeatherValue(string key) =>
+        _configuration[$"Weather:{key}"];
 }

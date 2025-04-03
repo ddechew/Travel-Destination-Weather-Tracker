@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace DestinationsApp.Services.Models;
+
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace DestinationsApp.Services.Models
+class CountryApiResponse
 {
-    class CountryApiResponse
-    {
-        [JsonPropertyName("error")]
-        public bool Error { get; set; }
+    [JsonPropertyName("error")]
+    public bool Error { get; set; }
 
-        [JsonPropertyName("msg")]
-        public string Msg { get; set; }
+    [JsonPropertyName("msg")]
+    public string Msg { get; set; }
 
-        [JsonPropertyName("data")]
-        public List<CountryData> Data { get; set; }
-    }
+    [JsonPropertyName("data")]
+    public List<CountryData> Data { get; set; }
 }

@@ -1,8 +1,7 @@
-﻿using DestinationsApp.Models;
+﻿namespace DestinationsApp.Services;
+
 using System.Net.Http.Headers;
 using System.Text.Json;
-
-namespace DestinationsApp.Services;
 
 public class AmadeusService
 {

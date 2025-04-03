@@ -94,5 +94,11 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+<ItemGroup>
+  <EmbeddedResource Include="appsettings.json" />
+</ItemGroup>
+
+
+
 
 </Project>
