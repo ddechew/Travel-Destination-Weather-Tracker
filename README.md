@@ -20,7 +20,7 @@ A cross-platform .NET MAUI mobile application that allows users to:
 
 ### 🌎 Weather Forecasts
 
-- Fetch 3-day forecasts via [WeatherAPI.com](https://www.weatherapi.com/)
+- Fetch 7-day forecasts via [WeatherAPI.com](https://www.weatherapi.com/)
 - View:
   - Current weather
   - Hourly forecast with icons and temperature
